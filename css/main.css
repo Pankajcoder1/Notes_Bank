@@ -1,70 +1,111 @@
+/*font fmaily for search bar*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 body
-	{
-		background-color: azure;	
-			}
+{
+	background-color: azure;	
+}
 
-			.content
-			{
-				margin-top: 90px;
-			}
-			.name-div
-			{
-				text-align: center;
-				background-color: rgb(187, 182, 182);
-				border-radius: 20px;
-				padding: 5px;
-				padding-top: 10px;
-				color: #030003;
-			}
-			.name-div h2
-			{
-				text-transform: capitalize;
-			}
-			.name-div p
-			{
-				color: rgb(102, 98, 98);	
-			}
+.name-div
+{
+	text-align: center;
+	border-radius: 5px;
+	background-color: #e9ecef;
+	padding-right: 5px;
+	padding-left:10px;
+	cursor: default;
+}
+.name-div p
+{
+	padding-top: 5px;
+	padding-bottom: 7px;
+	text-transform: capitalize;
+	padding-top: 5px;
+	color: green;
+}
 
 /* css for search bar start */
 .inner-div
 {
-	margin-top: 20px;
-	border: 1px solid rgb(176, 176, 201);
-	width: 100%;
-	height: 50px;
+	margin-left: 5%;
+	margin-right: 10%;
+	margin-top: 10px;
+	border: none;
+	width: 90%;
 	padding: 12px;
-	background-color: rgb(179, 172, 172);
-	margin-bottom: 100px;
-	border-radius: 24px;
-	height: 55px;
+	background-color: #fff;
+	height: auto;
+	border-top-right-radius: 12px;
+	border-top-left-radius: 12px;
 }
 
 .inner-div input
 {
+	padding: 7px;
+	height: 40px;
 	border: 0;
-	width: 90%;
-	background-color: rgb(179, 172, 172);
-	color: #ffffff;
-	font-weight: 500;
-	padding-top: 3px;
+	border-bottom: 1.4px solid #000;
+	border-bottom-right-radius: none;
+	border-bottom-left-radius: none;
+	border-bottom-color: #000;
+	line-height: 2px;
+	width: 97%;
+	background-color: #fff;
+	font-family: 'Montserrat', sans-serif;
+	letter-spacing: 1.5px;
+	color: #000;
+	font-weight: 600;
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
 }
-
-.inner-div button
-{
-	border: 0;
-	background: transparent;
-	width: 6%;
-	padding-top: 3px;
-	background-color: rgb(179, 172, 172);
-	border-radius: 25px;
-	opacity: 0.6;
-}
-
-@media (max-width:500px)
+/*css to set search bar start*/
+@media (max-width:1200px)
 {
 	.inner-div input
 	{
-		padding-left: 10px;
+		width: 95%;
 	}
 }
+
+@media (max-width: 767px)
+{
+	.inner-div
+	{
+		width: 110%;
+		margin-left: -5%;
+	}
+	.inner-div input
+	{
+		width: 94%;
+	}
+}
+@media(max-width: 600px)
+{
+	.inner-div
+	{
+		margin-left: 10px;
+		margin-right: 15px;
+		width: 98%;
+	}
+	.inner-div input
+	{
+		width: 90%;
+		margin-right: 15px;
+	}
+}
+@media(max-width: 400px)
+{
+	.inner-div
+	{
+		width: 100%;
+	}
+	.inner-div input
+	{
+		width: 83%;
+	}
+}
+/*css to set search bar end*/
 /* css for search bar end here. */
+#info_success i:hover
+{
+	color: red;
+}

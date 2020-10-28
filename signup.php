@@ -54,7 +54,7 @@
         <div class="box">
             <form action="database_file/signup_data.php" method="POST">
                 <h1>SignUp Here</h1>
-                <input type="text" name="name" placeholder="Name" required>
+                <input type="text" name="name" placeholder="Name" required autofocus>
                 <!-- here in roll no a add type text.Incase it create problem change it. -->
                 <input type="text" name="rollno" placeholder="RollNo" required>
                 <input type="text" name="idno" placeholder="Id.No" required>

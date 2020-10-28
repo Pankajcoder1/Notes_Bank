@@ -25,6 +25,7 @@
 						$_SESSION['name'] = $result['name'];
 						$_SESSION['idno'] = $result['idno'];
 						$_SESSION['rollno'] = $result['rollno'];
+						$_SESSION['first_view']=0;
 						header("Location: ../main.php?flag1");
 						exit();
 					}

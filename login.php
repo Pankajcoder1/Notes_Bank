@@ -33,13 +33,13 @@
                             $_SESSION['name'] = $row['name'];
                             $_SESSION['idno'] = $row['idno'];
                             $_SESSION['rollno'] = $row['rollno'];
-
+                            $_SESSION['first_view']=0;
                             header("Location: main.php");
                             exit();
                         }
                         else
                         {
-                            $msg = "Invalid credentialz";
+                            $msg = "Invalid credential";
                         }
                     }
                     else
@@ -114,7 +114,7 @@
             <!-- add link here to send data -->
             <form action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>" method="POST" class="box">
                 <h1>Login</h1>
-                <input type="email" name="email" placeholder="Email" required>
+                <input type="email" name="email" placeholder="Email" required autofocus>
                 <input type="password" name="pass" placeholder="Password" required>
                 <input type="submit" name="login" value="Login" required>
                 <a href="forgot_password.php" class="forgot"><p>forgot password?</p></a>

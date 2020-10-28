@@ -13,6 +13,7 @@
 		<!-- to refresh every time -->
 		<!-- <meta http-equiv="refresh" content="2"> -->
 		<meta charset="utf-8">
+        <!-- <meta http-equiv="refresh" content="2"> -->
 	  	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	  	<meta name="description" content="">
 	  	<meta name="author" content="">
@@ -22,9 +23,10 @@
 	  	<link rel="stylesheet" type="text/css" href="bootstrap-file/css/bootstrap.min.css">
 	  	<!-- local css file -->
 	    <link rel="stylesheet" href="css/login.css">
-	    <link rel="stylesheet" type="text/css" href="main.css">
+	    <link rel="stylesheet" type="text/css" href="css/main.css">
 	    <!-- cdn link for font-awesome -->
 	    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- glyghicon -->
 	    
 		<title>
 			Main Page
@@ -57,47 +59,64 @@
 
         <!-- navbar end here. -->
         <!-- now it for dynamic content. -->
-        <div class="content container">
-        	<div class="container name-div">
+        <div class="content container" style="margin-top: 80px;">
+        	<div class="container name-div" id="info_success">
         	<!-- add name of that person here.  -->
             <?php
-                if(!isset($_SESSION['email']))
-                {
-                    session_start();
-                }
                 if(isset($_SESSION['email']))
                 {
-                    if(isset($_GET['flag1']))
+                    if($_SESSION['first_view']==0)
                     {
-                        echo "Your password is reset.";
-                    }
-                    ?>
-                    <h2 style="text-transform: uppercase;">Hello 
-                        <?php
-                            echo $_SESSION['name'];
+                        $_SESSION['first_view']=1;
                         ?>
-                    </h2>
-                    <p>Thanks for visit.</p>
-                <?php
-                }
+                        <div style="cursor: default;">
+                            <?php
+                            if(isset($_SESSION['flag1']))
+                            {
+                                ?>
+                            <p style="margin-bottom: 0px;">Your password is reset.</p>
+                            <?php
+                            }
+                            ?>
+                            <p style="margin-top: 0px; margin-bottom: 0px;">
+                                Hello 
+                                <span style="font-weight: bold;">
+                                <?php
+                                    echo $_SESSION['name'];
+                                ?>
+                                </span>
+                                <i class="fa fa-times" aria-hidden="true" style="float: right; margin-top: 3px; cursor: pointer; width: 20px; vertical-align: 50%;" onclick="my();" id="cross"></i>
+                            </p>
+                        </div>
 
+                        <?php
+                    }
+                }
                 ?>
 			</div>
-			<div class="container">
+			<div class="">
 				<form>
 					<div>
 						<div class="inner-div">
-							<button type="button" class="search-button"><i class="fa fa-search" aria-hidden="true"></i></button>
-							<input type="text" name="" placeholder="search here..">
+							<input type="text" name="" placeholder="search here ..." style="margin-right: 10px;">
+                            <i class="fa fa-search" aria-hidden="true" style="cursor: pointer;"></i>
 						</div>
 					</div>
 				</form>
 			</div>
         	<div class="container">
-        		 all images comes here.
+                all images comes here.
         	</div>
         </div>
 
+
+        <script type="text/javascript">
+            function my()
+            {
+                // document.getElementById('info_success').style.height="0px";
+                document.getElementById('info_success').style.display="none";
+            }
+        </script>
         <!-- Bootstrap core JavaScript -->
         <script src="vendor/jquery/jquery.min.js"></script>
         <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

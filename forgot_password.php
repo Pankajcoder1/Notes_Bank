@@ -25,7 +25,7 @@
 	<div class="box">
 		<form action="database_file/reset_password.php" method="POST">
 			<h1>Forgot password</h1>
-			<input type="email" name="email" placeholder="Email" required>
+			<input type="email" name="email" placeholder="Email" required autofocus>
 			<input type="password" name="pass1" placeholder="New password" required>
 			<input type="password" name="pass2" placeholder="Confirm password" required>
 			<input type="submit" name="submit" value="Submit">
