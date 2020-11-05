@@ -26,7 +26,8 @@
 	    <link rel="stylesheet" type="text/css" href="css/main.css">
 	    <!-- cdn link for font-awesome -->
 	    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <!-- glyghicon -->
+        <!-- cdn link for jquery -->
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 	    
 		<title>
 			Main Page
@@ -71,7 +72,7 @@
                         ?>
                         <div style="cursor: default;">
                             <?php
-                            if(isset($_SESSION['flag1']))
+                            if(isset($_GET['flag1']))
                             {
                                 ?>
                             <p style="margin-bottom: 0px;">Your password is reset.</p>
@@ -90,6 +91,22 @@
                         </div>
 
                         <?php
+
+                    }
+                    else
+                    {
+                        if($_SESSION['done']==1)
+                        {
+                            ?>
+                            <div id="info_success">
+                                <p>Your data is successfully uploaded.
+                                    <span>
+                                        <i class="fa fa-times" aria-hidden="true" style="float: right; margin-top: 3px; cursor: pointer; width: 20px; vertical-align: 50%;" onclick="my();" id="cross"></i>
+                                    </span>
+                                </p>
+                            </div>
+                            <?php
+                        }
                     }
                 }
                 ?>
@@ -104,7 +121,7 @@
 					</div>
 				</form>
 			</div>
-        	<div class="container">
+        	<div class="container" id="hideDiv">
                 all images comes here.
         	</div>
         </div>
@@ -113,9 +130,17 @@
         <script type="text/javascript">
             function my()
             {
-                // document.getElementById('info_success').style.height="0px";
                 document.getElementById('info_success').style.display="none";
+                
             }
+
+            $(function()
+            {
+                setTimeout(function()
+                    { $("#info_success").fadeOut(1500);}, 5000)
+
+            })
+            
         </script>
         <!-- Bootstrap core JavaScript -->
         <script src="vendor/jquery/jquery.min.js"></script>
