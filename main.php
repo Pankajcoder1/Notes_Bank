@@ -32,33 +32,31 @@
 		<title>
 			Main Page
 		</title>
-
-        <style type="text/css">
-            
-        </style>
 	</head>
 	<body>
 	<!-- Navigation -section -->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
             <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="index.php">Notestuff.com</a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto my-2 my-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="upload.php">Upload</a>
-                    </li>
-                    <li class="nav-item">
-                    	<!-- add here for logout -->
-                        <a class="nav-link" href="logout.php" name="logout">SignOut</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="index.php">Contact/Suggestion</a>
-                    </li>
-                </ul>
-            </div>
+                <a class="navbar-brand js-scroll-trigger" href="index.php">
+                    Notestuff.com
+                </a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="upload.php">Upload</a>
+                        </li>
+                        <li class="nav-item">
+                        	<!-- add here for logout -->
+                            <a class="nav-link" href="logout.php" name="logout">SignOut</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="index.php">Contact/Suggestion</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
 
@@ -105,7 +103,7 @@
                         {
                             ?>
                             <div id="info_success">
-                                <p>Your file is successfully uploaded.
+                                <p class="container">Your file is successfully uploaded.
                                     <span>
                                         <i class="fa fa-times" aria-hidden="true" style="float: right; margin-top: 3px; cursor: pointer; width: 20px; vertical-align: 50%;" onclick="my();" id="cross"></i>
                                     </span>
@@ -118,18 +116,7 @@
                 }
                 ?>
 			</div>
-			<div class="">
-				<form>
-					<div>
-						<div class="inner-div">
-							<input type="text" name="" placeholder="search here ..." style="margin-right: 10px;">
-                            <i class="fa fa-search" aria-hidden="true" style="cursor: pointer;"></i>
-						</div>
-					</div>
-				</form>
-			</div>
-
-            
+            <!-- <br> -->
 
         	<div class="container" id="hideDiv" style="margin-top: 20px;">
                 <!-- php code to extract all images here -->
@@ -141,7 +128,7 @@
                     // echo "no of row ".$no_of_row;
                     if($no_of_row>0){
                         echo"<div class='container text-center' style='color: green; background-color: #e9ecef; padding:5px; border-radius:6px; margin-bottom:16px;'>
-                                 All images and pdf list
+                                 All available question paper.
                             </div>";
                     }
                     echo "<div class='container flex-container' style=''>";
@@ -190,10 +177,66 @@
                         }
                     }
                     echo "</div>";
-                    mysqli_free_result($result);
-                    mysqli_close($con);
                 ?>
-                <!-- all images comes here. -->
+                <!-- all question stuff comes here. -->
+
+                <!-- all notes related stuff -->
+                <?php
+                    $sql_query="SELECT * FROM uploaded_data WHERE data_type='notes'";
+                    $result=mysqli_query($con,$sql_query);
+                    $no_of_rows=mysqli_num_rows($result);
+                    if($no_of_rows>0){
+                        echo"<div class='container text-center' style='color: green; background-color: #e9ecef; padding:5px; border-radius:6px; margin-bottom:16px;'>
+                                 All available Notes.
+                            </div>";
+                    }
+                    echo "<div class='container flex-container' style=''>";
+                    while ($row=mysqli_fetch_assoc($result)) {
+                        # code...
+                        $path=$row['filename_path'];
+                        $len=strlen($path);
+                        $user=$row['user'];
+                        $course_code=$row['course_code'];
+                        if($path[$len-1]!='f'){
+                            ?>
+                            <figure class="figure" style="margin: 7px;">
+                                    <?php
+                                        echo "<i class='fa fa-file-image-o' style='font-size:70px'></i>";
+                                        echo "
+                                            <figcaption class='figure-caption'>
+                                                <p>Code : $course_code</p>
+                                                <p>Uploader: <b>$user</b></p>
+                                                <p>
+                                                    <a href='$path' style='color: green'; class=''>Click to view</a>
+                                                </p>
+                                            </figcaption>
+                                        ";
+                                    ?>
+                            </figure>
+                            
+                            <?php
+                        }
+                        else{
+                            ?>
+                                <figure class="figure" style="margin: 7px;">
+                                    <?php
+                                        echo "<i class='fa fa-file-pdf-o'style='font-size:70px'></i>";
+                                        echo "
+                                            <figcaption class='figure-caption'>
+                                                <p>Code : $course_code</p>
+                                                <p>Uploader: <b>$user</b></p>
+                                                <p>
+                                                    <a href='$path' style='color: green'; class=''>Click to view</a>
+                                                </p>
+                                            </figcaption>
+                                        ";
+                                    ?>
+                                </figure>
+                            <?php
+                        }
+                    }
+                    echo "</div>";
+                ?>
         	</div>
         </div>
 

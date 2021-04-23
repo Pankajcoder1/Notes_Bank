@@ -17,18 +17,16 @@
 			{
 				$filename = $_FILES['file']['name'];
 				$tempname = $_FILES['file']['tmp_name'];
-				$type = $_FILES['file']['type'];
+				$type=strtolower(pathinfo(basename($_FILES['file']['name']),PATHINFO_EXTENSION));
 				$types_of_upload = $_POST['type'];
-				$image_width = getimagesize($tempname);
 				$created_date = date("y/m/d");
 				// check for pdf and image(only allow)
-				if($type=="application/pdf"||$image_width[0]>0)
+				if($type=='pdf'||$type='img'||$type='jpg'||$type='jpeg')
 				{
 					if($types_of_upload=="question")
 					{
 						// question uploaded
-						// create a folde all_notes and inside it create question and notes folde to store pdf or images.
-						// $final_path = "all_notes/question/".$filename;
+						// create a folder all_notes and inside it create question and notes folde to store pdf or images.
 						$target_dir="uploaded_data/question_data/";
 						$final_path=$target_dir.basename($_FILES['file']['name']);
 						
