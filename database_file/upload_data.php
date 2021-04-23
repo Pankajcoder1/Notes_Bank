@@ -28,9 +28,14 @@
 					{
 						// question uploaded
 						// create a folde all_notes and inside it create question and notes folde to store pdf or images.
-						$final_path = "all_notes/question/".$filename;
-						$sql = "INSERT INTO uploaded_data (user,course_code,filename_path,created_date) VALUES ('$username','$course_code','$final_path','$created_date')";
-						if(mysqli_query($con,$sql))
+						// $final_path = "all_notes/question/".$filename;
+						$target_dir="uploaded_data/question_data/";
+						$final_path=$target_dir.basename($_FILES['file']['name']);
+						
+						$data_type="question";
+						$sql = "INSERT INTO uploaded_data (user,course_code,filename_path,created_date,data_type) VALUES ('$username','$course_code','$final_path','$created_date','$data_type')";
+						$final_path="../".$final_path;
+						if(mysqli_query($con,$sql)&&move_uploaded_file($tempname, $final_path))
 						{
 							$_SESSION['done']=1;
 							header("Location: ../main.php");
@@ -38,15 +43,18 @@
 						}
 						else
 						{
-							echo "error in connection ";
+							echo "error in connection "."<br>";
 						}
 					}
 					else if($types_of_upload=="notes")
 					{
 						// notes uploaded
-						$final_path = "all_notes/notes/".$filename;
-						$sql = "INSERT INTO uploaded_data (user,course_code,filename_path,created_date) VALUES ('$username','$course_code','$final_path','$created_date')";
-						if(mysqli_query($con,$sql))
+						$data_type="notes";
+						$target_dir="uploaded_data/notes_data/";
+						$final_path=$target_dir.basename($_FILES['file']['name']);
+						$sql = "INSERT INTO uploaded_data (user,course_code,filename_path,created_date,data_type) VALUES ('$username','$course_code','$final_path','$created_date','$data_type')";
+						$final_path="../".$final_path;
+						if(mysqli_query($con,$sql)&&move_uploaded_file($tempname, $final_path))
 						{
 							$_SESSION['done']=1;
 							header("Location: ../main.php");
