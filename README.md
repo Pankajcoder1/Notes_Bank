@@ -16,4 +16,4 @@ sharing notes and question paper or to store it for future use.
 5. Js
 
 #### Note
-> I used a template of [Start Bootstrap - Creative](https://startbootstrap.com/template-overviews/creative/) only for front page. Copyright 2013-2019 Blackrock Digital LLC. Code released under the [MIT](https://github.com/BlackrockDigital/startbootstrap-creative/blob/gh-pages/LICENSE) license.
+> I used a template of [Start Bootstrap - Creative](https://startbootstrap.com/template-overviews/creative/) <b>only for front page</b>. Copyright 2013-2019 Blackrock Digital LLC. Code released under the [MIT](https://github.com/BlackrockDigital/startbootstrap-creative/blob/gh-pages/LICENSE) license.
